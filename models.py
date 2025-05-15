@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 
 from database import Base
 
-
+# Question 모델
 class Question(Base):
     __tablename__ = "question"
 
