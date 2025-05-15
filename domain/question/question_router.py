@@ -25,14 +25,17 @@ router = APIRouter(
 #         _question_list = db.query(Question).order_by(Question.create_date.desc()).all()
 #     return _question_list
 
-# from fastapi import Depends 추가
-# response_model=list[question_schema.Question]의 의미는
-# question_list 함수의 리턴값은 Question 스키마로 구성된 리스트임을 의미한다.
-@router.get("/list", response_model=list[question_schema.Question])
-def question_list(db: Session = Depends(get_db)):
-    _question_list = question_crud.get_question_list(db)
-        # db.query(Question).order_by(Question.create_date.desc()).all())
-    return _question_list
+
+@router.get("/list", response_model=question_schema.QuestionList)
+# 출력 항목에 전체 건수를 추가하기 위해 response_model을 QuestionList 스키마로 변경
+def question_list(db: Session = Depends(get_db),
+                  page: int = 0, size: int = 10):
+    total, _question_list = question_crud.get_question_list(
+        db, skip=page*size, limit=size)
+    return {
+        'total': total,
+        'question_list': _question_list
+    }
 
 
 # question_detail 함수는 URL을 통해 얻은 question_id ㅏㄱㅂㅅ으로

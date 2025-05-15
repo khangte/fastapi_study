@@ -27,4 +27,9 @@ class QuestionCreate(BaseModel):
         if not v or not v.strip():
             raise ValueError('빈 값은 허용되지 않습니다.')
         return v
-    
+
+# 질문 목록 API의 응답으로 사용하는 스키마
+class QuestionList(BaseModel):
+    total: int = 0                      # 전체 게시물 개수
+    question_list: list[Question] = []  # 질문 목록 데이터
+
