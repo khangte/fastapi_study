@@ -2,6 +2,12 @@
 
 > 개발환경 구성 
 > - 개발환경 : VirtualBox + Ubuntu 22.04 Server
+>   - 메모리 : 8GB
+>   - 프로세서 : 4개 이상(pycharm, vscode 사용 때문)
+>   - 비디오메모리 : 16MB
+>   - 모니터개수 : 1개
+>   - 저장소 메모리 : 25GB 이상
+>   - 네트워크 : NAT 네트워크 포트포워딩
 > - 백엔드 : FastAPI (uvicorn 실행)
 > - 백엔드 프레임워크 : Pycharm 
 > - 프론트엔드 : Svelte (Bootstrap 5.3.6 UI 기반)
