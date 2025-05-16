@@ -1,6 +1,7 @@
 <script>
     import fastapi from "../lib/api"
     import Error from "../components/Error.svelte"
+    import { push } from 'svelte-spa-router'
 
     export let params = {}
     let question_id = params.question_id
@@ -49,10 +50,11 @@
         </div>
     </div>
 
+    <button class="btn btn-secondary" on:click="{() => {
+        push('/')
+    }}">목록으로</button>
+
     <!-- 답변 목록 -->
-    <!-- 안전하게 length에 접근할 수 있게 코드 수정함 -->
-    <!-- <h5 class="border-bottom my-3 py-2">{question.answers.length}개의 답변이 있습니다.</h5> -->
-    
     <h5 class="border-bottom my-3 py-2">{question.answers?.length?? 0}개의 답변이 있습니다.</h5>
     {#each question.answers as answer}
     <div class="card my-3">
