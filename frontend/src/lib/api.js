@@ -9,13 +9,20 @@
  * failure_callback: APi 호출 실패시 수행할 함수, 전달된 함수에는 오류 값이 입력으로 주어진다.
  */
 
+import qs from "qs"
+
 const fastapi = (operation, url, params, success_callback, failure_callback) => {
     let method = operation
     let content_type = 'application/json'
     let body = JSON.stringify(params)
 
-    let _url = import.meta.env.VITE_SERVER_URL+url
+    if(operation === 'login') {
+        method = 'post'
+        content_type = 'application/x-www-form-urlencoded'
+        body = qs.stringify(params)
+    }
 
+    let _url = import.meta.env.VITE_SERVER_URL+url
     if(method === 'get') {
         _url += "?" + new URLSearchParams(params)
     }

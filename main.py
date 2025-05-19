@@ -14,6 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from domain.answer import answer_router
 from domain.question import question_router
+from domain.user import user_router
 
 app = FastAPI()
 
@@ -36,3 +37,4 @@ app.add_middleware(
 # app 객체에 include_router 메서드를 사용하여 question_router.py 파일의 router 객체를 등록했다.
 app.include_router(question_router.router)
 app.include_router(answer_router.router)
+app.include_router(user_router.router)
