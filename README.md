@@ -173,9 +173,12 @@ CREATE DATABASE login_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 ---
 
-1. schema 생성
-2. crud 함수 작성
-3. router 생성
-4. 라우팅 컴포넌트 App.svelte 등록
-5. 컴포넌트 파일 작성
-6. 
+> ## 기능 구현 절차
+> 1. 스키마 생성
+> 2. CRUD 함수 작성
+> 3. 라우터 생성
+> 4. Svelte 컴포넌트 등록
+> 5. 컴포넌트 파일 작성
+
+---
+
