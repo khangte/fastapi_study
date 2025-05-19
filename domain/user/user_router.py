@@ -2,8 +2,8 @@ from datetime import timedelta, datetime
 
 from fastapi import APIRouter, HTTPException
 from fastapi import Depends
-from fastapi.security import OAuth2PasswordRequestForm
-from jose import jwt
+from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
+from jose import jwt, JWTError
 from sqlalchemy.orm import Session
 from starlette import status
 
@@ -15,6 +15,8 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24
 # $ openssl rand -hex 32
 SECRET_KEY = "d636517809afb1541819a0414b13574f329b4266a49b35246478f4017269fbf8"
 ALGORITHM = "HS256"
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/user/login")
+
 
 router = APIRouter(
     prefix="/api/user",
@@ -55,3 +57,23 @@ def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(),
         "token_type": "bearer",
         "username": user.username
     }
+
+def get_current_user(token: str = Depends(oauth2_scheme),
+                     db: Session = Depends(get_db)):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str = payload.get("sub")
+        if username is None:
+            raise credentials_exception
+    except JWTError:
+        raise credentials_exception
+    else:
+        user = user_crud.get_user(db, username=username)
+        if user is None:
+            raise credentials_exception
+        return user

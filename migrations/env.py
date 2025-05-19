@@ -46,6 +46,7 @@ def run_migrations_offline() -> None:
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
+        render_as_batch=True,
     )
 
     with context.begin_transaction():
@@ -67,7 +68,9 @@ def run_migrations_online() -> None:
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata
+            connection=connection,
+            target_metadata=target_metadata,
+            render_as_batch=True, # SQLite 데이터베이스는 제약조건에 이름이 없다는 오류를 발생시키기 때문에, True 설정 필요함
         )
 
         with context.begin_transaction():

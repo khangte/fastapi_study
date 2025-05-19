@@ -4,6 +4,8 @@ from sqlalchemy.orm import Session
 from database import get_db
 from domain.question import question_schema, question_crud
 # from models import Question
+from domain.user.user_router import get_current_user
+from models import User
 
 from starlette import status
 
@@ -51,6 +53,8 @@ def question_detail(question_id: int, db: Session = Depends(get_db)):
 # "응답 없음"을 나타낼 수 있다.
 @router.post("/create", status_code=status.HTTP_204_NO_CONTENT)
 def question_create(_question_create: question_schema.QuestionCreate,
-                    db: Session = Depends(get_db)):
-    question_crud.create_question(db=db, question_create=_question_create)
+                    db: Session = Depends(get_db),
+                    current_user: User = Depends(get_current_user)):
+    question_crud.create_question(db=db, question_create=_question_create,
+                                  user=current_user)
 
