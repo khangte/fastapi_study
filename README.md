@@ -49,6 +49,8 @@
 > ```bash
 > /home/kmh/myapi/myapi.db
 > ```
+> ![check_db_path.PNG](images/check_db_path.PNG)
+> 
 > 2. Ubuntu의 IP 주소 확인
 > ```bash
 > ip a
