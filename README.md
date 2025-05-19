@@ -82,3 +82,40 @@
 
 ---
 
+> ## MySQL 서버 사용 방법
+> 1.mysql 설치
+> ```bash
+> $ sudo apt update
+> $ sudo apt install mysql-server
+> ```
+> 
+> 2. mysql 서버 실행 상태 확인
+> ```bash
+> $ sudo service mysql status
+> ```
+> 
+> 3. MySQL 로그인
+> ```bash
+> $ mysql -u root -p
+> ```
+> ---
+> ※ 에러 메시지
+> ```bash
+> ERROR 1698 (28000): Access denied for user 'root'@'localhost'
+> => root 유저가 패스워드 인증이 아닌 
+> "auth_socket" 방식으로만 로그인이 가능하도록 설정되어 있기 때문!
+> > ```
+> - 해결방법
+> ```bash
+> $ sudo mysql
+> > ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
+> > FLUSH PRIVILEGES;
+> ```
+
+- MySQL은 서버 기반 DB이기 때문에, DB가 서버 내에 직접 있어야함.
+- 즉, 미리 CREATE DATABASE를 해서 DB를 생성해야됨.
+```sql
+CREATE DATABASE login_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+---

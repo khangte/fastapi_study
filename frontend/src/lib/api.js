@@ -1,7 +1,7 @@
 /* /frontent/src/lib/api.js */
 /**
  * fastapi 함수의 매개변수
- * operation: 데이터를 처리하는 방법, 소문자마 ㄴ사용
+ * operation: 데이터를 처리하는 방법, 소문자만 사용
  * url: 요청 URL, 단 백엔드 서버의 호스트명 이후의 URL만 전달
  * params: 요청 데이터
  * success_callback: API 호출 성공 시 수행할 함수, 전달된 함수에는 API 호출시 리턴되는 json이 입력으로 주어진다.
