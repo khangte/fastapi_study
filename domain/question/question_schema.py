@@ -19,6 +19,7 @@ class Question(BaseModel):
     create_date: datetime.datetime
     answers: list[Answer] = []
     user: User | None
+    modify_date: datetime.datetime | None = None
 
 class QuestionCreate(BaseModel):
     subject: str
@@ -34,4 +35,10 @@ class QuestionCreate(BaseModel):
 class QuestionList(BaseModel):
     total: int = 0                      # 전체 게시물 개수
     question_list: list[Question] = []  # 질문 목록 데이터
+
+class QuestionUpdate(QuestionCreate): # QuestionCreate를 상속
+    question_id: int
+
+class QuestionDelete(BaseModel):
+    question_id: int
 
