@@ -44,22 +44,27 @@
 ---
 
 > ## Ubuntu 내의 SQLite DB 파일을 Windows DB Browser for SQLite로 열기
-> 방법 1: SCP로 복사(가장 간단하고 안전)
+> ### 방법 1: SCP로 복사(가장 간단하고 안전)
 > 1. Ubuntu에서 DB 파일 경로 확인
 > ```bash
+> $ pwd myapi.db
 > /home/kmh/myapi/myapi.db
 > ```
 > ![check_db_path.PNG](images/check_db_path.PNG)
 > 
 > 2. Ubuntu의 IP 주소 확인
 > ```bash
-> ip a
-> 예: 127.0.0.1
+> $ ip a
+> 127.0.0.1
 > ```
+> ![check_db_path.PNG](images/check_db_path.PNG)
 > 3. Windows CMD or PowerShell 에서 복사
 > ```bash
-> scp kmh@192.168.56.101:/home/kmh/myapi/myapi.db .
+> $ scp kmh@127.0.0.1:/home/kmh/myapi/myapi.db .
 > ```
+> ![copy_db.PNG](images/copy_db.PNG)
+> 4. DB Browser (SQLite) 에서 DB 열기
+> ![open_db.png](images/open_db.png)
 
 ---
 
