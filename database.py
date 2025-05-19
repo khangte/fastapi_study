@@ -1,3 +1,6 @@
+# database.py
+# 데이터베이스와 관련된 설정을 하는 파일
+
 # import contextlib
 
 from sqlalchemy import create_engine, MetaData

@@ -12,8 +12,61 @@
 > - 백엔드 프레임워크 : Pycharm 
 > - 프론트엔드 : Svelte (Bootstrap 5.3.6 UI 기반)
 > - 프론트엔드 프레임워크 : VS Code 
-> - 데이터베이스 : SQLite
+> - 데이터베이스 : SQLAlchemy - SQLite
 > - 배포용 GitHub Repository : khangte/fastapi_study
+
+## 파일 구조
+```
+myapi/
+├── domain/
+│   ├── answer/
+│   │   ├── answer_crud.py
+│   │   ├── answer_router.py
+│   │   └── answer_schema.py
+│   ├── question/
+│   │   ├── question_crud.py
+│   │   ├── question_router.py
+│   │   └── question_schema.py
+│   └── user/
+│       ├── user_crud.py
+│       ├── user_router.py
+│       └── user_schema.py
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Error.svelte
+│   │   │   └── Navigation.svelte
+│   │   ├── lib/
+│   │   │   ├── api.js
+│   │   │   └── store.js
+│   │   ├── routes/
+│   │   │   ├── AnswerModify.svelte
+│   │   │   ├── Detail.svelte
+│   │   │   ├── Home.svelte
+│   │   │   ├── QuestionCreate.svelte
+│   │   │   ├── QuestionModify.svelte
+│   │   │   ├── UserCreate.svelte
+│   │   │   └── UserLogin.svelte
+│   │   ├── app.css
+│   │   ├── App.svelte
+│   │   ├── main.js
+│   │   └── vite-env.d.ts
+│   ├── .env
+│   ├── .gitignore
+│   ├── index.html
+│   ├── jsconfig.json
+│   ├── package-lock.json
+│   └── package.json
+├── migrations/
+│   ├── versions/
+│   └── env.py
+├── database.py
+├── main.py
+├── models.py
+├── myapi.db
+├── README.md
+└── requirements.txt
+```
 
 ---
 > ## uv 가상환경
