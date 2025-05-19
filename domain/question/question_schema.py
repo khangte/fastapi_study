@@ -9,6 +9,7 @@ import datetime
 from pydantic import BaseModel, field_validator
 
 from domain.answer.answer_schema import Answer
+from domain.user.user_schema import User
 
 # Question 스키마
 class Question(BaseModel):
@@ -17,6 +18,7 @@ class Question(BaseModel):
     content: str
     create_date: datetime.datetime
     answers: list[Answer] = []
+    user: User | None
 
 class QuestionCreate(BaseModel):
     subject: str
