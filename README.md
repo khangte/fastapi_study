@@ -25,9 +25,21 @@
 > ```bash
 > $ source .venv/bin/activate 
 > ```
-> - 패키지 설치
+
+> ## Svelte 설치
 > ```bash
-> $ uv pip install fastapi uvicorn sqlalchemy
+> $ npm create vite@latest frontend -- --template svelte
+> $ cd frontend
+> $ npm install
+> ```
+> - jsconfig.json 타입스크립트 사용 안함 => false로 변경
+> ```json
+> 파일명: /frontend/jsconfig.json
+> {
+>   (...생락...)
+>   "checkJs": false
+>   (...생락...)
+> }
 > ```
 
 ---
