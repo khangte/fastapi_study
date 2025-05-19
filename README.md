@@ -58,11 +58,13 @@
 > 127.0.0.1
 > ```
 > ![check_db_path.PNG](images/check_db_path.PNG)
+>
 > 3. Windows CMD or PowerShell 에서 복사
 > ```bash
 > $ scp kmh@127.0.0.1:/home/kmh/myapi/myapi.db .
 > ```
 > ![copy_db.PNG](images/copy_db.PNG)
+> 
 > 4. DB Browser (SQLite) 에서 DB 열기
 > ![open_db.png](images/open_db.png)
 
