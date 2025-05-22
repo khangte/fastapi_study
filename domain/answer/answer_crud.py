@@ -30,10 +30,25 @@ def delete_answer(db: Session, db_answer: Answer):
     db.delete(db_answer)
     db.commit()
 
-# 답변 추천 CRUD
+# 답변 추천 CRUD (교재식. 지금 사용 안함)
 def vote_answer(db: Session,
                 db_answer: Answer,
                 db_user: User):
-    db_answer.voter.append(db_user)
-    db.commit()
+    if db_user not in db_answer.voter:
+        db_answer.voter.append(db_user)
+        db.commit()
+        return True
+    else:
+        return False
 
+def toggle_vote_answer(db: Session,
+                         db_answer: Answer,
+                         db_user: User) -> bool:
+    if db_user in db_answer.voter:
+        db_answer.voter.remove(db_user)
+        db.commit()
+        return False
+    else:
+        db_answer.voter.append(db_user)
+        db.commit()
+        return True

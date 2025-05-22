@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from starlette.exceptions import HTTPException
+
 from domain.question.question_schema import QuestionCreate, QuestionUpdate
 from models import Question, User, Answer
 from sqlalchemy import and_ # 최신버전에서 outerjoin 'and_'를 반드시 사용
@@ -54,13 +56,17 @@ def delete_question(db: Session, db_question: Question):
     db.delete(db_question)
     db.commit()
 
-# 질문 추천 CRUD
+# 질문 추천 CRUD (교재식. 지금 사용 안함)
 # Question 모델의 voter에 추천인(User 모델)을 추가하는 함수
 def vote_question(db: Session,
                   db_question: Question,
                   db_user: User):
-    db_question.voter.append(db_user)
-    db.commit()
+    if db_user not in db_question.voter:
+        db_question.voter.append(db_user)
+        db.commit()
+        return True
+    else:
+        return False
 
 def toggle_vote_question(db: Session,
                          db_question: Question,
