@@ -25,15 +25,38 @@
 > - [GitHub/khangte](https://github.com/khangte/fastapi_study)
 
 ---
+
 > ## 실행코드
-> - 백엔드 실행코드
+> ### 개발중
+> 1.백엔드 실행 (FastAPI)
 > ```bash
 > $ uvicorn main:app --host 0.0.0.0 --port 8000
 > ```
-> - 프론트엔드 실행코드
+> 2.프론트엔드 실행 (Svelte + Vite 개발 서버)
 > ```bash
+> $ cd frontend
 > $ npm run dev
 > ```
+> 3. 개발 서버 접속 URL: **localhost:5173**
+> ---
+> ### 배포용
+> 1. 프론트엔드 빌드
+> ```bash
+> $ cd frontend
+> $ npm run build
+> ```
+> 2. 프론트엔드 정적 파일 서빙 설정
+> ```python
+> # main.py 에 추가
+> from starlette.responses import FileResponse
+> from starlette.staticfiles import StaticFiles
+> origins=["http://localhost:8000", # 배포 서버]
+> app.mount("/assets", StaticFiles(directory="frontend/dist/assets"))
+> @app.get("/") # / 경로로 접속하면 frontend/dist/index.html 파일을 읽어서 서비스 한다.
+> def index():
+>    return FileResponse("frontend/dist/index.html")
+> ```
+> 3. FastAPI 서버 접속 URL: **localhost:8000**
 
 ---
 
@@ -132,7 +155,7 @@ myapi/
 
 ---
 
-> Alembic 마이그레이션 과정
+> ## Alembic 마이그레이션 과정
 > 1. Alembic 초기화
 > ```bash
 > alembic init migrations
@@ -151,6 +174,34 @@ myapi/
 > 4. DB에 적용
 > ```bash
 > alembic upgrade head
+> ```
+
+---
+> ## 터미널에서 DB 확인방법
+> 1. SQLite3 클라이언트 설치
+> ```bash
+> sudo apt update
+> sudo apt install sqlite3
+> ```
+> 2. ```myapi.db``` 접속
+> ```bash
+> sqlite3 myapi.db
+> ```
+> 3. 테이블 목록 확인
+> ```sqlite
+> .tables
+> ```
+> 4. 테이블 구조 확인
+> ```sqlite
+> .schema user
+> ```
+> 5. 데이터 확인
+> ```sqlite
+> SELECT * FROM user;
+> ```
+> 6. 종료
+> ```sqlite
+> .quit
 > ```
 
 ---
@@ -184,8 +235,6 @@ myapi/
 
 ## 개발 과정 화면 캡처
 
----
-
 ### 3-14 검색
 1. 검색 상자 생성 
 ![스크린샷(106) - 복사본.png](images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%28106%29%20-%20%EB%B3%B5%EC%82%AC%EB%B3%B8.png)
@@ -200,8 +249,6 @@ myapi/
 5. 'pybo' 네비게이션-브랜드 버튼 클릭
 ![스크린샷(108) - 복사본.png](images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%28108%29%20-%20%EB%B3%B5%EC%82%AC%EB%B3%B8.png)
 ![스크린샷(106).png](images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%28106%29.png)
-
----
 
 ### 3-15 프론트엔드 빌드
 

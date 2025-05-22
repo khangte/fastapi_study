@@ -27,7 +27,6 @@ router = APIRouter(
 #         _question_list = db.query(Question).order_by(Question.create_date.desc()).all()
 #     return _question_list
 
-
 @router.get("/list", response_model=question_schema.QuestionList)
 # 출력 항목에 전체 건수를 추가하기 위해 response_model을 QuestionList 스키마로 변경
 def question_list(db: Session = Depends(get_db),
@@ -39,7 +38,6 @@ def question_list(db: Session = Depends(get_db),
         'total': total,
         'question_list': _question_list
     }
-
 
 # question_detail 함수는 URL을 통해 얻은 question_id ㅏㄱㅂㅅ으로
 # 질문 상세 내역을 조회하여 Question 스키마로 리턴하는 함수

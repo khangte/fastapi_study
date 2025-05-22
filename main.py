@@ -11,6 +11,8 @@
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.responses import FileResponse
+from starlette.staticfiles import StaticFiles
 
 from domain.answer import answer_router
 from domain.question import question_router
@@ -19,8 +21,10 @@ from domain.user import user_router
 app = FastAPI()
 
 origins = [
-    "http://localhost:5173",
+    "http://localhost:5173", # 개발 서버
+    "http://localhost:8000", # 배포 서버
 ]
+
 # CORS 설정
 app.add_middleware(
     CORSMiddleware,
@@ -38,3 +42,12 @@ app.add_middleware(
 app.include_router(question_router.router)
 app.include_router(answer_router.router)
 app.include_router(user_router.router)
+
+# 프론트엔드 빌드 후 적용 => FastAPI 서버 서비스 가능
+# localhost:8000
+app.mount("/assets", StaticFiles(directory="frontend/dist/assets"))
+@app.get("/") # / 경로로 접속하면 frontend/dist/index.html 파일을 읽어서 서비스 한다.
+def index():
+   return FileResponse("frontend/dist/index.html")
+    # FileResponse는 FastAPI가 정적인 파일을 출력할 때 사용
+

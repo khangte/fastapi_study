@@ -38,10 +38,16 @@ def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(),
 
     # check user and password
     user = user_crud.get_user(db, form_data.username)
-    if not user or not pwd_context.verify(form_data.password, user.password):
+
+    # 아이디 확인
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail="가입되지 않은 아이디입니다.")
+
+    if not pwd_context.verify(form_data.password, user.password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username or password",
+            detail="비밀번호가 일치하지 않습니다.",
             headers={"WWW-Authenticate": "Bearer"},
         )
 
