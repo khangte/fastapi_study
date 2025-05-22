@@ -161,7 +161,7 @@ myapi/
 >
 > 3. Windows CMD or PowerShell 에서 복사
 > ```bash
-> $ scp kmh@127.0.0.1:/home/kmh/myapi/myapi.db .
+> > scp kmh@127.0.0.1:/home/kmh/myapi/myapi.db .
 > ```
 > ![copy_db.PNG](images/copy_db.PNG)
 > 

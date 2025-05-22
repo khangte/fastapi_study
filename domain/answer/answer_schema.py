@@ -22,11 +22,15 @@ class Answer(BaseModel):
     user: User | None
     question_id: int
     modify_date: datetime.datetime | None = None
-
+    voter: list[User] = [] # 추천인
 
 class AnswerUpdate(AnswerCreate): # AnswerCreate 스키마 를 상속
     answer_id: int
 
 class AnswerDelete(BaseModel):
+    answer_id: int
+
+# 답변 추천 스키마
+class AnswerVote(BaseModel):
     answer_id: int
 

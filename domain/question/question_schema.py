@@ -20,6 +20,7 @@ class Question(BaseModel):
     answers: list[Answer] = []
     user: User | None
     modify_date: datetime.datetime | None = None
+    voter: list[User] = [] # 추천인
 
 class QuestionCreate(BaseModel):
     subject: str
@@ -42,3 +43,6 @@ class QuestionUpdate(QuestionCreate): # QuestionCreate를 상속
 class QuestionDelete(BaseModel):
     question_id: int
 
+# 질문 추천 스키마
+class QuestionVote(BaseModel):
+    question_id: int

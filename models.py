@@ -14,7 +14,7 @@ from database import Base
 # 이런 경우에는 "다대다(M:N)" 관계를 사용해야 한다.
 # SQLAlchemy에서 MtN 관계를 적용하는 방법에 대해 알아보자.
 question_voter = Table(
-    'question_voter', # 테이블명
+    'question_voter',
     Base.metadata,
     Column('user_id', Integer,
            ForeignKey('user.id'), primary_key=True),
@@ -40,9 +40,8 @@ class Question(Base):
     # voter(추천인) 속성 추가
     voter = relationship('User',
                          secondary=question_voter,
-                         backref='question_voters'
+                         backref='question_voters')
                          # user 속성의 backref="question_users"와 중복되면 안된다.
-                         )
     # secondary 값으로 위에 생성한 question_voter 테이블 객체를 지정.
     # => Question 모델을 통해 추천인을 저장하면 실제 데이터는
     # quesiton_voter 테이블에 저장되고 저장된 추천인 정보는

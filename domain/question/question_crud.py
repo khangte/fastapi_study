@@ -40,3 +40,11 @@ def delete_question(db: Session, db_question: Question):
     db.delete(db_question)
     db.commit()
 
+# 질문 추천 CRUD
+# Question 모델의 voter에 추천인(User 모델)을 추가하는 함수
+def vote_question(db: Session,
+                  db_question: Question,
+                  db_user: User):
+    db_question.voter.append(db_user)
+    db.commit()
+
