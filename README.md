@@ -1,31 +1,6 @@
 # 점프 투 FastAPI
 [[위키독스 **점프 투 FastAPI**]](https://www.google.com/search?q=%EC%A0%90%ED%94%84%ED%88%AC+fastapi&rlz=1C1GCEU_koKR1161KR1161&oq=%EC%A0%90%ED%94%84%ED%88%AC&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg5MgYIARBFGDsyBggCEEUYOzIGCAMQRRg7MgYIBBBFGDvSAQkzMDA1ajBqMTWoAgiwAgE&sourceid=chrome&ie=UTF-8)
 
-> ## 개발환경 구성 
-> ### 시스템 환경
-> - 가상화 플랫폼: VirtualBox + Ubuntu 22.04 Server
-> - 메모리: 8GB
-> - 프로세서: 4개 이상(pycharm, vscode 사용 때문)
-> - 비디오메모리: 16MB
-> - 모니터개수: 1개
-> - 저장소 메모리: 16~25GB
-> - 네트워크: NAT + 포트포워딩
-> ### 백엔드
-> - 프레임워크: FastAPI
-> - 서버 실행: Uvicorn
-> - 개발 환경: PyCharm
-> ### 프론트엔드
-> - 프레임워크: Svelte
-> - UI 라이브러리: Bootstrap 5.3.6
-> - 개발환경: Visual Studio Code
-> ### 데이터베이스 
-> - RDBMS: SQLite
-> - ORM: SQLAlchemy
-> ### 배포용 GitHub Repository
-> - [GitHub/khangte](https://github.com/khangte/fastapi_study)
-
----
-
 > ## 실행코드
 > ### 개발중
 > 1.백엔드 실행 (FastAPI)
@@ -57,6 +32,31 @@
 >    return FileResponse("frontend/dist/index.html")
 > ```
 > 3. FastAPI 서버 접속 URL: **localhost:8000**
+
+---
+
+> ## 개발환경 구성 
+> ### 시스템 환경
+> - 가상화 플랫폼: VirtualBox + Ubuntu 22.04 Server
+> - 메모리: 8GB
+> - 프로세서: 4개 이상(pycharm, vscode 사용 때문)
+> - 비디오메모리: 16MB
+> - 모니터개수: 1개
+> - 저장소 메모리: 16~25GB
+> - 네트워크: NAT + 포트포워딩
+> ### 백엔드
+> - 프레임워크: FastAPI
+> - 서버 실행: Uvicorn
+> - 개발 환경: PyCharm
+> ### 프론트엔드
+> - 프레임워크: Svelte
+> - UI 라이브러리: Bootstrap 5.3.6
+> - 개발환경: Visual Studio Code
+> ### 데이터베이스 
+> - RDBMS: SQLite
+> - ORM: SQLAlchemy
+> ### 배포용 GitHub Repository
+> - [GitHub/khangte](https://github.com/khangte/fastapi_study)
 
 ---
 
