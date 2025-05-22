@@ -72,7 +72,7 @@
             )
         }
     }
-
+    /*
     function vote_question(_question_id) {
         if(window.confirm('정말로 추천하시겠습니까?')) {
             let url = "/api/question/vote"
@@ -88,6 +88,23 @@
                 }
             )
         }
+    }
+    */
+
+    async function vote_question(question_id) {
+        const url = "/api/question/vote";
+        const params = { question_id };
+
+        fastapi('post', url, params, 
+            (json) => {
+                // 서버에서 voted와 voter_count를 함께 응답한다고 가정
+                question.voted = json.voted;
+                question.voter_count = json.voter_count;
+            },
+            (err_json) => {
+                console.error("추천 오류:", err);
+            }
+        )
     }
 
     function vote_answer(answer_id) {
@@ -130,11 +147,20 @@
             </div>
 
             <div class="my-3">
-
+                <!-- 
                 <button class="btn btn-sm btn-outline-secondary"
                 on:click={() => vote_question(question.id)}> 
                 추천
                 <span class="badge rounded-pill bg-success">{question.voter.length}</span>
+                </button>
+            --> 
+
+                <button class="btn btn-sm {question.voted ? 'btn-info' : 'btn-outline-secondary'}" 
+                on:click={() => vote_question(question.id)} > 
+                {#if question.voted} 👍 추천됨
+                {:else} 👍 추천
+                {/if}
+                <span class="badge rounded-pill bg-success">{question.voter_count}</span>
                 </button>
 
                 {#if question.user && $username === question.user.username }

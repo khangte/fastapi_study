@@ -62,3 +62,15 @@ def vote_question(db: Session,
     db_question.voter.append(db_user)
     db.commit()
 
+def toggle_vote_question(db: Session,
+                         db_question: Question,
+                         db_user: User) -> bool:
+    if db_user in db_question.voter:
+        db_question.voter.remove(db_user)
+        db.commit()
+        return False
+    else:
+        db_question.voter.append(db_user)
+        db.commit()
+        return True
+

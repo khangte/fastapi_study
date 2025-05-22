@@ -86,7 +86,7 @@ def question_delete(_question_delete: question_schema.QuestionDelete,
     question_crud.delete_question(db=db, db_question=db_question)
 
 # 질문 추천 라우터
-@router.post("/vote", status_code=status.HTTP_204_NO_CONTENT)
+@router.post("/vote", status_code=status.HTTP_200_OK)
 def question_vote(_question_vote: question_schema.QuestionVote,
                   db: Session = Depends(get_db),
                   current_user: User = Depends(get_current_user)):
@@ -94,4 +94,7 @@ def question_vote(_question_vote: question_schema.QuestionVote,
     if not db_question:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail="데이터를 찾을수 없습니다.")
-    question_crud.vote_question(db, db_question=db_question, db_user=current_user)
+    # question_crud.vote_question(db, db_question=db_question, db_user=current_user)
+    voted = question_crud.toggle_vote_question(db, db_question, db_user=current_user)
+    return {"voted": voted, "voter_count": len(db_question.voter)}
+

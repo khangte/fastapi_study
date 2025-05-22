@@ -46,3 +46,4 @@ class QuestionDelete(BaseModel):
 # 질문 추천 스키마
 class QuestionVote(BaseModel):
     question_id: int
+
