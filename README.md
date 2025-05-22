@@ -252,7 +252,13 @@ myapi/
 
 ## 기능 구현 화면 캡처
 - 회원가입
+![스크린샷(111)](https://github.com/user-attachments/assets/31ea6a20-5477-4db3-a177-a6c66ec73185)
+![스크린샷(112)](https://github.com/user-attachments/assets/29352b59-47c7-4ffb-9efd-94c079c66944)
+
 - 로그인
+![스크린샷(113)](https://github.com/user-attachments/assets/e8d5a255-5482-418d-9dec-9a273994a8e5)
+![스크린샷(114)](https://github.com/user-attachments/assets/6e80384b-6720-48d1-8dc2-d7ae3b67f78e)
+
 - 로그아웃
 - 게시판 - 게시글 번호 제목 답변개수 작성자 작성일시 표시 
 - 게시판 페이징
