@@ -31,9 +31,10 @@ router = APIRouter(
 @router.get("/list", response_model=question_schema.QuestionList)
 # 출력 항목에 전체 건수를 추가하기 위해 response_model을 QuestionList 스키마로 변경
 def question_list(db: Session = Depends(get_db),
-                  page: int = 0, size: int = 10):
+                  page: int = 0, size: int = 10,
+                  keyword: str = ''):
     total, _question_list = question_crud.get_question_list(
-        db, skip=page*size, limit=size)
+        db, skip=page*size, limit=size, keyword=keyword)
     return {
         'total': total,
         'question_list': _question_list
