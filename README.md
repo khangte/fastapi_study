@@ -43,6 +43,14 @@ myapi/
 │       ├── user_router.py
 │       └── user_schema.py
 ├── frontend/
+│   ├── dist/
+│   │   ├── assets/
+│   │   │   ├── index-??.css
+│   │   │   └── index-h-??.js
+│   │   ├── index.html
+│   │   └── vite.svg
+│   ├── public/
+│   │   └── vite.svg
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── Error.svelte
@@ -168,6 +176,13 @@ myapi/
 >    return FileResponse("frontend/dist/index.html")
 > ```
 > 3. FastAPI 서버 접속 URL: **localhost:8000**
+
+---
+
+> ### 필요 파일
+> - router.py - 라우터 파일 - URL과 API의 전체적인 동작을 관리
+> - crud.py - 데이터베이스 처리 파일 - 데이터의 생성(Create), 조회(Read), 수정(Update), 삭제(Delete)를 처리 (CRUD)
+> - schema.py - 입출력 관리 파일 - 입력 데이터와 출력 데이터의 스펙 정의 및 검증
 
 ---
 
