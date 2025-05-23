@@ -1,40 +1,6 @@
 # 점프 투 FastAPI
 [[위키독스 **점프 투 FastAPI**]](https://www.google.com/search?q=%EC%A0%90%ED%94%84%ED%88%AC+fastapi&rlz=1C1GCEU_koKR1161KR1161&oq=%EC%A0%90%ED%94%84%ED%88%AC&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg5MgYIARBFGDsyBggCEEUYOzIGCAMQRRg7MgYIBBBFGDvSAQkzMDA1ajBqMTWoAgiwAgE&sourceid=chrome&ie=UTF-8)
 
-> ## 실행코드
-> ### 개발중
-> 1.백엔드 실행 (FastAPI)
-> ```bash
-> $ uvicorn main:app --host 0.0.0.0 --port 8000
-> ```
-> 2.프론트엔드 실행 (Svelte + Vite 개발 서버)
-> ```bash
-> $ cd frontend
-> $ npm run dev
-> ```
-> 3. 개발 서버 접속 URL: **localhost:5173**
-> ---
-> ### 배포용
-> 1. 프론트엔드 빌드
-> ```bash
-> $ cd frontend
-> $ npm run build
-> ```
-> 2. 프론트엔드 정적 파일 서빙 설정
-> ```python
-> # main.py 에 추가
-> from starlette.responses import FileResponse
-> from starlette.staticfiles import StaticFiles
-> origins=["http://localhost:8000", # 배포 서버]
-> app.mount("/assets", StaticFiles(directory="frontend/dist/assets"))
-> @app.get("/") # / 경로로 접속하면 frontend/dist/index.html 파일을 읽어서 서비스 한다.
-> def index():
->    return FileResponse("frontend/dist/index.html")
-> ```
-> 3. FastAPI 서버 접속 URL: **localhost:8000**
-
----
-
 > ## 개발환경 구성 
 > ### 시스템 환경
 > - 가상화 플랫폼: VirtualBox + Ubuntu 22.04 Server
@@ -125,18 +91,6 @@ myapi/
 
 ---
 
-> ## uv 가상환경
-> - 가상환경 생성
-> ```
-> $ uv venv
-> ```
-> - 가상환경 활성화
-> ```bash
-> $ source .venv/bin/activate 
-> ```
-
----
-
 > ## Svelte 설치
 > ```bash
 > $ npm create vite@latest frontend -- --template svelte
@@ -152,6 +106,68 @@ myapi/
 >   (...생락...)
 > }
 > ```
+
+---
+
+> ## 실행방법
+> - 가상환경 생성
+> ```
+> $ uv venv
+> ```
+> - 가상환경 활성화
+> ```bash
+> $ source .venv/bin/activate 
+> ```
+> 패키지 설치
+> ```bash
+> uv pip install requirements.txt
+> ```
+> ---
+> 리비전 파일 생성
+> ```bash
+> alembic revision --autogenerate
+> ```
+> 마이그레이션 적용
+> ```bash
+> alembic upgrade head
+> ```
+> ---
+> - ```/frontent/.enc```파일에서 본인 URL 등록
+> ```text
+> VITE_SERVER_URL=http://127.0.0.1:8000
+> ```
+> ---
+> ### 실행코드
+> #### 개발중
+> 1.백엔드 실행 (FastAPI)
+> ```bash
+> $ uvicorn main:app --host 0.0.0.0 --port 8000
+> ```
+> 2.프론트엔드 실행 (Svelte + Vite 개발 서버)
+> ```bash
+> $ cd frontend
+> $ npm run dev
+> ```
+> 3. 개발 서버 접속 URL: **localhost:5173**
+> ---
+> #### 배포용
+> 1. 프론트엔드 빌드
+> ```bash
+> $ cd frontend
+> $ npm run build
+> ```
+> 2. 프론트엔드 정적 파일 서빙 설정
+> ```python
+> # main.py 에 추가
+> from starlette.responses import FileResponse
+> from starlette.staticfiles import StaticFiles
+> origins=["http://localhost:8000", # 배포 서버]
+> app.mount("/assets", StaticFiles(directory="frontend/dist/assets"))
+> @app.get("/") # / 경로로 접속하면 frontend/dist/index.html 파일을 읽어서 서비스 한다.
+> def index():
+>    return FileResponse("frontend/dist/index.html")
+> ```
+> 3. FastAPI 서버 접속 URL: **localhost:8000**
 
 ---
 
@@ -177,6 +193,7 @@ myapi/
 > ```
 
 ---
+
 > ## 터미널에서 DB 확인방법
 > 1. SQLite3 클라이언트 설치
 > ```bash
@@ -230,25 +247,6 @@ myapi/
 > 
 > 4. DB Browser (SQLite) 에서 DB 열기
 > ![open_db.png](images/open_db.png)
-
----
-
-## 개발 과정 화면 캡처
-
-### 3-14 검색
-1. 검색 상자 생성 
-![스크린샷(106) - 복사본.png](images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%28106%29%20-%20%EB%B3%B5%EC%82%AC%EB%B3%B8.png)
-2. 검색 실행 
-![스크린샷(107) - 복사본.png](images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%28107%29%20-%20%EB%B3%B5%EC%82%AC%EB%B3%B8.png)
-![스크린샷(108).png](images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%28108%29.png)
-3. 게시물 확인
-![스크린샷(109).png](images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%28109%29.png)
-4. '목록' 버튼 클릭
-![스크린샷(109).png](images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%28109%29.png)
-![스크린샷(108).png](images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%28108%29.png)
-5. 'pybo' 네비게이션-브랜드 버튼 클릭
-![네비게이션브랜드버튼.png](images/%EB%84%A4%EB%B9%84%EA%B2%8C%EC%9D%B4%EC%85%98%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%B2%84%ED%8A%BC.png)
-![스크린샷(106).png](images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%28106%29.png)
 
 ---
 
