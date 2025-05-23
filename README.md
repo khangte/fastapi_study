@@ -250,6 +250,8 @@ myapi/
 ![네비게이션브랜드버튼.png](images/%EB%84%A4%EB%B9%84%EA%B2%8C%EC%9D%B4%EC%85%98%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%B2%84%ED%8A%BC.png)
 ![스크린샷(106).png](images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%28106%29.png)
 
+---
+
 ## 기능 구현 화면 캡처
 - 회원가입
 ![스크린샷(111)](https://github.com/user-attachments/assets/31ea6a20-5477-4db3-a177-a6c66ec73185)
