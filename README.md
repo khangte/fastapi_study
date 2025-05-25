@@ -146,19 +146,21 @@ myapi/
 > ```text
 > VITE_SERVER_URL=http://127.0.0.1:8000
 > ```
+> 
 > ---
+> 
 > ### 실행코드
 > #### 개발중
-> 1.백엔드 실행 (FastAPI)
+> 1. 백엔드 실행 (FastAPI)
 > ```bash
-> $ uvicorn main:app --host 0.0.0.0 --port 8000
+> $ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 > ```
-> 2.프론트엔드 실행 (Svelte + Vite 개발 서버)
+> 2. 프론트엔드 실행 (Svelte + Vite 개발 서버)
 > ```bash
 > $ cd frontend
 > $ npm run dev
 > ```
-> 3. 개발 서버 접속 URL: **localhost:5173**
+> 3. 개발 서버 접속 ```URL: **localhost:5173**```
 > ---
 > #### 배포용
 > 1. 프론트엔드 빌드
@@ -177,7 +179,11 @@ myapi/
 > def index():
 >    return FileResponse("frontend/dist/index.html")
 > ```
-> 3. FastAPI 서버 접속 URL: **localhost:8000**
+> 3. 백엔드 실행 (FastAPI)
+> ```bash
+> $ uvicorn main:app --host 0.0.0.0 --port 8000
+> ```
+> 4. FastAPI 서버 접속 ```URL: **localhost:8000**```
 
 ---
 
