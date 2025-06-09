@@ -172,6 +172,7 @@ $ alembic upgrade head
 VITE_SERVER_URL=http://127.0.0.1:8000
 ```
 
+---
 
 ## 실행코드
 
@@ -187,8 +188,6 @@ $ cd frontend
 $ npm run dev
 ```
 3. 개발 서버 접속 ```URL: **localhost:5173**```
-
----
 
 ### 배포용
 
@@ -267,6 +266,7 @@ $ ip a
 127.0.0.1
 ```
 ![check_db_path.PNG](images/check_db_path.PNG)
+
 3. Windows CMD or PowerShell 에서 복사
 ```bash
 > scp kmh@127.0.0.1:/home/kmh/myapi/myapi.db .
