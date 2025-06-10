@@ -258,23 +258,19 @@ SELECT * FROM user;
 $ pwd myapi.db
 /home/kmh/myapi/myapi.db
 ```
-![check_db_path.PNG](images/check_db_path.PNG)
 
 2. Ubuntu의 IP 주소 확인
 ```bash
 $ ip a
 127.0.0.1
 ```
-![check_db_path.PNG](images/check_db_path.PNG)
 
 3. Windows CMD or PowerShell 에서 복사
-```bash
+```shell
 > scp kmh@127.0.0.1:/home/kmh/myapi/myapi.db .
 ```
-![copy_db.PNG](images/copy_db.PNG)
 
 4. DB Browser (SQLite) 에서 DB 열기
-![open_db.png](images/open_db.png)
 
 ---
 
@@ -286,83 +282,5 @@ $ ip a
 - 프론트엔드: 화면 구성 흐름
   1. Svelte 컴포넌트 작성
   2. 라우터에 컴포넌트 등록
-
----
-
-## 기능 구현 화면 캡처
-- 회원가입
-![스크린샷(111)](https://github.com/user-attachments/assets/31ea6a20-5477-4db3-a177-a6c66ec73185)
-![스크린샷(112)](https://github.com/user-attachments/assets/29352b59-47c7-4ffb-9efd-94c079c66944)
-
-- 로그인
-![스크린샷(113)](https://github.com/user-attachments/assets/e8d5a255-5482-418d-9dec-9a273994a8e5)
-![스크린샷(114)](https://github.com/user-attachments/assets/6e80384b-6720-48d1-8dc2-d7ae3b67f78e)
-
-- 로그아웃
-![스크린샷(114)](https://github.com/user-attachments/assets/0aaa916f-de2f-4304-9bd6-c4edcded6741)
-![스크린샷(115)](https://github.com/user-attachments/assets/2f471feb-a94b-4f37-a193-bc5908ed4e11)
-
-- 게시판
-  - 게시글 번호, 제목, 답변개수, 작성자, 작성일시, 표시
-  - 최대 10개의 게시글
-![스크린샷(153)](https://github.com/user-attachments/assets/507e5a44-e007-4eea-b294-420f55ef9cb7)
-
-- 게시판 페이징
-  - 현재 페이지 기준 ± 5
-![스크린샷(152)](https://github.com/user-attachments/assets/e0ea27c7-8931-4755-be41-abf70ac6f77c)
-
-- 질문 등록
-![스크린샷(116)](https://github.com/user-attachments/assets/5072bf72-e0cb-41f4-ae1d-ba4b3eabdce1)
-![스크린샷(118)](https://github.com/user-attachments/assets/2c1c7419-26fe-499d-b079-875c408869f7)
-![스크린샷(119)](https://github.com/user-attachments/assets/e3304042-cf73-4443-afe0-d8e108cec00f)
-![스크린샷(120)](https://github.com/user-attachments/assets/10f8843b-b8aa-47a7-82ba-be9533cf7a0a)
-
-- 질문 수정
-![스크린샷(120)](https://github.com/user-attachments/assets/b8e13ba4-4c48-452b-9a32-aca56f33e780)
-![스크린샷(121)](https://github.com/user-attachments/assets/95520691-ab82-4ccb-8278-a9ee72a4539c)
-![스크린샷(122)](https://github.com/user-attachments/assets/b362b73a-c6c8-4b24-b922-bf6161c75b61)
-
-- 답변 등록
-![스크린샷(123)](https://github.com/user-attachments/assets/67877cec-0d38-42f6-a9bd-2f918fb43c2f)
-![스크린샷(124)](https://github.com/user-attachments/assets/d0dca5c4-704b-4658-b5c8-a63d4e4b58d4)
-
-- 답변 수정
-![스크린샷(124)](https://github.com/user-attachments/assets/51f91a39-bd51-4da7-80c6-9b885618187c)
-![스크린샷(125)](https://github.com/user-attachments/assets/e7e50e8b-59b0-4fb5-b093-ae91d35bc4df)
-![스크린샷(126)](https://github.com/user-attachments/assets/b9e3f07d-1074-4e48-aaed-998a0c40b6ea)
-
-- 질문/답변 추천
-![스크린샷(132)](https://github.com/user-attachments/assets/19ef9084-ea6b-4407-b632-de3633dce66b)
-![스크린샷(133)](https://github.com/user-attachments/assets/44134a29-95e0-4aee-82df-663f56cf08fa)
-![스크린샷(134)](https://github.com/user-attachments/assets/a33ddb7c-da07-4802-b280-0245cf3f0b76)
-
-- 답변 삭제
-![스크린샷(135)](https://github.com/user-attachments/assets/dfb6a549-f8e2-4f76-9378-fba4c0c305a7)
-![스크린샷(136)](https://github.com/user-attachments/assets/03a2e0db-0f51-4227-9b16-ac05131510d3)
-![스크린샷(137)](https://github.com/user-attachments/assets/16b16068-dcd2-447a-8ccf-a6731e11c820)
-
-- 질문 삭제
-![스크린샷(138)](https://github.com/user-attachments/assets/e7055b38-d7fe-4f7e-8d42-33dd059f0118)
-![스크린샷(139)](https://github.com/user-attachments/assets/9b342488-9731-408c-943b-f3c15579982f)
-
-- 질문/답변 검색
-![스크린샷(145)](https://github.com/user-attachments/assets/819e266d-ec3a-4bd2-a54a-d9c10b57a602)
-![스크린샷(146)](https://github.com/user-attachments/assets/7ecad8f0-2549-462e-be86-bf5c875e5774)
-![스크린샷(147)](https://github.com/user-attachments/assets/17bbe7de-c53c-4d27-90df-2682e3304e8a)
-
-- 상세 게시글 목록 버튼
-![스크린샷(157)](https://github.com/user-attachments/assets/b8963763-9d5d-4c9b-8685-4ba641ac58fb)
-![스크린샷(158)](https://github.com/user-attachments/assets/8257ba9d-e5c2-4e79-8482-5656f919ab1e)
-![스크린샷(159)](https://github.com/user-attachments/assets/4ee10ec5-730e-45ea-b631-d4f1a4e6d508)
-
-- 네비게이션바 브랜드 버튼
-![스크린샷(160)](https://github.com/user-attachments/assets/cfb9865c-1ba5-4ac2-aa39-8b7a4dd2cb74)
-![스크린샷(161)](https://github.com/user-attachments/assets/9a7dba55-36d6-4655-ac2e-98e71ff137e7)
-
-- 마크다운 형식 가능
-![스크린샷(148)](https://github.com/user-attachments/assets/639d26ca-f711-4f62-b843-98090702dd3d)
-![스크린샷(149)](https://github.com/user-attachments/assets/11bd9bc5-e785-4da5-8471-bc3013d41b92)
-![스크린샷(150)](https://github.com/user-attachments/assets/057941a7-3d45-4db9-8225-b7e4c9f1c973)
-![스크린샷(151)](https://github.com/user-attachments/assets/8e1182a1-3114-49a0-b26a-90ead77904a3)
 
 ---
