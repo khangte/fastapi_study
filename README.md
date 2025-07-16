@@ -179,7 +179,7 @@ $ alembic upgrade head
 ```
 
 ### 환경 변수 설정
-- 환경 파일 경로 : ```/frontent/.enc```
+- 환경 파일 경로 : ```/frontent/.env```
 - 다음과 같이 백엔드 API 서버 URL 등록:
 ```ini
 VITE_SERVER_URL=http://127.0.0.1:8000
