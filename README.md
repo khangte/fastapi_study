@@ -145,21 +145,34 @@ $ uv pip install requirements.txt
 ```
 
 ### 데이터베이스 마이그레이션 (Alembic)
+
+0. alembic 설치
+```bash
+sudo apt install alembic
+```
+
 1. Alembic 초기화
 ```bash
 $ alembic init migrations
 ```
+
 2. 설정 파일 수정
 - ```alembic.ini```수정
+```ini
+sqlalchemy.url = sqlite:///./myapi.db
+```
+
 - ```migrations/env.py```수정
 ```python
- from models
- target_metadata = models.Base.metadata
+from models
+target_metadata = models.Base.metadata
 ```
+
 3. 변경사항 감지하고 마이그레이션 파일 생성
 ```bash
 $ alembic revision --autogenerate
 ```
+
 4. DB에 적용
 ```bash
 $ alembic upgrade head
